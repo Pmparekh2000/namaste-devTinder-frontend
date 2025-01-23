@@ -7,6 +7,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      // withCredentials: true is required to successfully set cookie obtained from backend into browser
       const response = await axios.post(
         "http://localhost:3000/auth/login",
         {

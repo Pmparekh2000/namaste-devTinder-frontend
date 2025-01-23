@@ -1,25 +1,29 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { AUTH, BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("nik@doshi.com");
   const [password, setPassword] = useState("Nik!2025");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       // withCredentials: true is required to successfully set cookie obtained from backend into browser
       const response = await axios.post(
-        "http://localhost:3000/auth/login",
+        BASE_URL + AUTH + "/login",
         {
           emailId,
           password,
         },
         { withCredentials: true }
       );
-      console.log(
-        "Response obtained while making the login API call",
-        response.data
-      );
+      dispatch(addUser(response.data.user));
+      navigate("/");
     } catch (error) {
       console.log("Error obtained while making the login API call", error);
     }

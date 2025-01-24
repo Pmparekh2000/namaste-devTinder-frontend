@@ -8,6 +8,7 @@ import { AUTH, BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("nik@doshi.com");
   const [password, setPassword] = useState("Nik!2025");
+  const [loginError, setLoginError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,6 +26,12 @@ const Login = () => {
       dispatch(addUser(response.data.user));
       navigate("/");
     } catch (error) {
+      if (error.status === 500) {
+        setLoginError(
+          error?.response?.data?.error ||
+            "Something went wrong while logging-in"
+        );
+      }
       console.log("Error obtained while making the login API call", error);
     }
   };
@@ -59,6 +66,9 @@ const Login = () => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
+          </div>
+          <div>
+            <p className="text-red-600">{loginError}</p>
           </div>
           <div className="card-actions justify-center my-4">
             <button className="btn" onClick={() => handleLogin()}>

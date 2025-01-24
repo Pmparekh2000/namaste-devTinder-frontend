@@ -3,6 +3,7 @@ import { BASE_URL, USER } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
+import UserCard from "./UserCard";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
@@ -23,7 +24,14 @@ const Feed = () => {
   useEffect(() => {
     getUserFeed();
   }, []);
-  return <div>This is the feed component</div>;
+  return (
+    <div className="flex justify-center my-10">
+      {/* {feed?.users.map((user) => {
+        return <UserCard key={user._id} userInfo={user} />;
+      })} */}
+      <UserCard userInfo={feed?.users[0]} />
+    </div>
+  );
 };
 
 export default Feed;

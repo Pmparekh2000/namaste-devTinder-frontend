@@ -18,8 +18,6 @@ const NavBar = () => {
           withCredentials: true,
         }
       );
-      console.log("response obtained is", response);
-
       dispatch(removeUser());
       navigate("/login");
     } catch (error) {

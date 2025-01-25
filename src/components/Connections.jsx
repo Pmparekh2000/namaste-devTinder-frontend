@@ -43,7 +43,7 @@ const Connections = () => {
             >
               <img
                 alt="photo"
-                className="w-20 h-20 rounded-full"
+                className="w-20 h-20 rounded-full object-cover"
                 src={connection.photoUrl}
               />
               <div className="text-left mx-4">

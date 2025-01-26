@@ -72,7 +72,7 @@ const Requests = () => {
                   <p>
                     {age} {gender}
                   </p>
-                  <p>{skills.join(", ")}</p>
+                  <p>{skills === undefined ? "" : skills.join(", ")}</p>
                 </div>
                 <div className="card-actions justify-center my-4">
                   <button

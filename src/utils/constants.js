@@ -7,3 +7,5 @@ export const INTERESTED = "Interested";
 export const IGNORED = "Ignored";
 export const ACCEPTED = "accepted";
 export const REJECTED = "rejected";
+export const LOGIN = "login";
+export const SIGNUP = "signup";

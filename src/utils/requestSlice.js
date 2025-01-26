@@ -5,8 +5,6 @@ const requestSlice = createSlice({
   initialState: null,
   reducers: {
     addRequest: (state, action) => {
-      console.log("payload is", action.payload);
-
       return action.payload;
     },
     removeRequest: (state, action) => null,

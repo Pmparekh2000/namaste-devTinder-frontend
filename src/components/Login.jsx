@@ -7,8 +7,8 @@ import { AUTH, BASE_URL, LOGIN, SIGNUP } from "../utils/constants";
 
 const Login = (props) => {
   const { type } = props;
-  const [emailId, setEmailId] = useState("virat@kohli.com");
-  const [password, setPassword] = useState("Virat!@#2025");
+  const [emailId, setEmailId] = useState("jasprit@bumrah.com");
+  const [password, setPassword] = useState("Jasprit!2025");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [loginError, setLoginError] = useState("");

@@ -10,3 +10,7 @@ export const ACCEPTED = "accepted";
 export const REJECTED = "rejected";
 export const LOGIN = "login";
 export const SIGNUP = "signup";
+export const MEMBERSHIP = "Membership";
+export const GOLD = "Gold";
+export const SILVER = "Silver";
+export const SPACE = " ";

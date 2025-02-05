@@ -7,18 +7,21 @@ import {
   SILVER,
   SPACE,
 } from "../utils/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Premium = () => {
   const [isUserPremium, setIsUserPremium] = useState(false);
-  const verifyPremiumUser = async () => {
-    const res = axios.get(BASE_URL + PAYMENT + "/verify", {
+  useEffect(() => {
+    verifyPremiumUser();
+  }, []);
+  async function verifyPremiumUser() {
+    const res = await axios.get(BASE_URL + PAYMENT + "/verify", {
       withCredentials: true,
     });
     if (res.data.isPremium) {
       setIsUserPremium(true);
     }
-  };
+  }
   const handleBuyClick = async (membershipType) => {
     const order = await axios.post(
       BASE_URL + PAYMENT + "/create",

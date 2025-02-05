@@ -4,6 +4,7 @@ export const AUTH = "/auth";
 export const PROFILE = "/profile";
 export const USER = "/user";
 export const REQUEST = "/request";
+export const PAYMENT = "/payment";
 export const INTERESTED = "Interested";
 export const IGNORED = "Ignored";
 export const ACCEPTED = "accepted";

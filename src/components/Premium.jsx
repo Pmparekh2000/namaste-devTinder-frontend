@@ -7,8 +7,18 @@ import {
   SILVER,
   SPACE,
 } from "../utils/constants";
+import { useState } from "react";
 
 const Premium = () => {
+  const [isUserPremium, setIsUserPremium] = useState(false);
+  const verifyPremiumUser = async () => {
+    const res = axios.get(BASE_URL + PAYMENT + "/verify", {
+      withCredentials: true,
+    });
+    if (res.data.isPremium) {
+      setIsUserPremium(true);
+    }
+  };
   const handleBuyClick = async (membershipType) => {
     const order = await axios.post(
       BASE_URL + PAYMENT + "/create",
@@ -35,12 +45,13 @@ const Premium = () => {
       theme: {
         color: "#F37254",
       },
+      handler: verifyPremiumUser(),
     };
     // It should open the razorpay dialogue box
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
-  return (
+  return !isUserPremium ? (
     <div className="m-10">
       <div className="flex w-full">
         <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
@@ -76,6 +87,8 @@ const Premium = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <>You are already a premium user</>
   );
 };
 

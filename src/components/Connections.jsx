@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BASE_URL, USER } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const [userConnections, setUserConnections] = useState(null);
@@ -54,6 +55,14 @@ const Connections = () => {
                   {age} {gender}
                 </p>
                 <p>{about}</p>
+                <div>
+                  <Link
+                    className="btn btn-primary"
+                    to={`/chat/${connection._id}`}
+                  >
+                    Chat
+                  </Link>
+                </div>
               </div>
             </div>
           );
